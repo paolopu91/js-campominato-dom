@@ -10,7 +10,26 @@ start.addEventListener("click", function()  {
 
 //Variabile globale, per richiamare il mio elemento HTML utilizabile in tutto il mio foglio js
 const gridContainer = document.querySelector(".grid-container");
-  
+ 
+//creo la mia funzione per generare le bombe dentro al mio gioco
+function bombNumberList (cellGrid){
+    //qui dentro ora creo un array vuoto in cui andranno i miei numeri che ho generato per le bombe
+    const containerBomb = [];
+    console.log(containerBomb);
+    //creo il mio ciclo per generare 16 numeri random da andare ad inserire nel mio array
+    do{
+        // qui inserirò la mia operazione matematica per generare numeri random casuali
+        const randomNumber = Math.floor(Math.random() * cellGrid) + 1;
+        console.log(randomNumber);
+        //creo la mia condizione per far si che dentro al mio array ci siano tutti numeri diversi.
+        if(!containerBomb.includes(randomNumber)){
+            containerBomb.push(randomNumber);
+        }
+    }while(containerBomb)
+
+    return bombNumberList;
+}
+
     // quanto voglio che sia grande la griglia? inteso in numero di quadrati che può contenere
 function cellGrid (orizontalCells , verticalCells){
     const cellsNumber = orizontalCells * verticalCells;
