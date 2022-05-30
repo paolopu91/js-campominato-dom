@@ -12,29 +12,29 @@ start.addEventListener("click", function()  {
 const gridContainer = document.querySelector(".grid-container");
  
 //creo la mia funzione per generare le bombe dentro al mio gioco
-function bombNumberList (cellGrid){
+function bombNumberList (cellGrid, ){
     //qui dentro ora creo un array vuoto in cui andranno i miei numeri che ho generato per le bombe
     const containerBomb = [];
     console.log(containerBomb);
     //creo il mio ciclo per generare 16 numeri random da andare ad inserire nel mio array
     do{
         // qui inserirò la mia operazione matematica per generare numeri random casuali
-        const randomNumber = Math.floor(Math.random() * cellGrid) + 1;
+        const randomNumber = Math.round(Math.random() * cellGrid) + 1;
         console.log(randomNumber);
         //creo la mia condizione per far si che dentro al mio array ci siano tutti numeri diversi.
         if(!containerBomb.includes(randomNumber)){
             containerBomb.push(randomNumber);
         }
-    }while(containerBomb)
+    }while(containerBomb);
 
-    return bombNumberList;
+    return containerBomb;
 }
 
     // quanto voglio che sia grande la griglia? inteso in numero di quadrati che può contenere
 function cellGrid (orizontalCells , verticalCells){
     const cellsNumber = orizontalCells * verticalCells;
 
-    console.log(cellsNumber)
+    console.log(cellsNumber);
     
     //questa formula va messa fuori il nostro ciclo for perchè sennò ad ogni ciclo si ripete
     gridContainer.style.width = `calc(100px * ${orizontalCells})`
@@ -56,9 +56,9 @@ function cellGrid (orizontalCells , verticalCells){
             this.classList.add('bgAzzurro');
         })
         
-        // celle.addEventListener("click" , function(){
-        //     this.classList.add('bg');
-        // })
+        celle.toggleAttribute("click" , function(){
+        this.classList.add('bg');
+        })
 
     }
 
