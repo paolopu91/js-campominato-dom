@@ -13,15 +13,15 @@ start.addEventListener("click", function()  {
 const gridContainer = document.querySelector(".grid-container");
 
 //creo la mia funzione per generare le bombe dentro al mio gioco
-function bombList (cellGrid, maxBombNumber = 16){
+
+ 
+function bombList (maxBombsNumber){
     //qui dentro ora creo un array vuoto in cui andranno i miei numeri che ho generato per le bombe
     const contenitoreBombe = [];
-    console.log("contenitoreBombe")
     //creo il mio ciclo per generare 16 numeri random da andare ad inserire nel mio array
-    for(let i = 0 ; i < contenitoreBombe.length; i++){
+    for(let i = 1 ; i <= 16 ; i++){
         // qui inserirò la mia operazione matematica per generare numeri random casuali
-        let randomNumbers = Math.floor(Math.random() * cellGrid);
-        console.log("randomNumbers");
+        let randomNumbers = Math.floor(Math.random() * maxBombsNumber) + 1;
         //creo la mia condizione per far si che dentro al mio array ci siano tutti numeri diversi.
         if(!contenitoreBombe.includes(randomNumbers)){
             contenitoreBombe.push(randomNumbers);
@@ -29,22 +29,13 @@ function bombList (cellGrid, maxBombNumber = 16){
     }
     return contenitoreBombe;
 }
-bombList(16)
     
-    
-    
-    
-        
-       
-        
-     
-
-
     // quanto voglio che sia grande la griglia? inteso in numero di quadrati che può contenere
 function cellGrid (orizontalCells , verticalCells){
     
     const cellsNumber = orizontalCells * verticalCells;
-
+    const contenitoreBombe = bombList(cellsNumber)
+    console.log(contenitoreBombe);
     console.log(cellsNumber);
     
     //questa formula va messa fuori il nostro ciclo for perchè sennò ad ogni ciclo si ripete
