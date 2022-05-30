@@ -8,9 +8,10 @@
 const start = document.getElementById("start")
 start.addEventListener("click", function()  {
 
+
 //Variabile globale, per richiamare il mio elemento HTML utilizabile in tutto il mio foglio js
 const gridContainer = document.querySelector(".grid-container");
- 
+
 //creo la mia funzione per generare le bombe dentro al mio gioco
 function bombNumberList (cellGrid, ){
     //qui dentro ora creo un array vuoto in cui andranno i miei numeri che ho generato per le bombe
@@ -30,21 +31,22 @@ function bombNumberList (cellGrid, ){
     return containerBomb;
 }
 
+
     // quanto voglio che sia grande la griglia? inteso in numero di quadrati che può contenere
 function cellGrid (orizontalCells , verticalCells){
+    
     const cellsNumber = orizontalCells * verticalCells;
 
     console.log(cellsNumber);
     
     //questa formula va messa fuori il nostro ciclo for perchè sennò ad ogni ciclo si ripete
     gridContainer.style.width = `calc(100px * ${orizontalCells})`
-
+    
 
     // creo il mio ciclo per far si che si vedano le mie celle
     for (let i = 1 ; i<=cellsNumber; i++){
         // creo una variabile per i miei numeri crescenti
 
-        
         const celle = document.createElement("div");
         celle.classList.add("celle");
         celle.innerHTML = `<span>${i}</span>`;
@@ -62,7 +64,22 @@ function cellGrid (orizontalCells , verticalCells){
 
     }
 
-
 }
+const play = document.getElementById('play')
+
+play.addEventListener("click", function(){
+    gridContainer.classList.remove("Easy", "Medium", "Hard")
+    gridContainer.innerHTML="";
+if (document.getElementById('Easy').selected) {
+    cellGrid(10, 10)
+} else if (document.getElementById('Medium').selected) {
+    cellGrid(9, 9)
+} else if (document.getElementById('Hard').selected) {
+    cellGrid(7, 7)
+}
+})
+
 cellGrid(10, 10);
+cellGrid(8, 8);
+cellGrid(7, 7);
 })
