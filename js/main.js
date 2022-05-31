@@ -20,6 +20,7 @@ function bombList (maxBombsNumber){
     // richiamo la mia funzione per farla funzionare
     return contenitoreBombe;
 } 
+
 // funzione per il numero di celle che deve essere presente nel mio gioco
 function cellGrid (orizontalCells , verticalCells){
 
@@ -36,7 +37,7 @@ function cellGrid (orizontalCells , verticalCells){
     //questo fa riferimenti al ciclo for sottostante!!
     gridContainer.style.width = `calc(100px * ${orizontalCells})`
     // creo il mio ciclo per far si che si vedano le mie celle
-    for (let i = 1 ; i<=cellsNumber; i++){
+    for (let i = 1 ; i <= cellsNumber; i++){
         // creo una variabile per i miei numeri crescenti
         const celle = document.createElement("div");
         celle.classList.add("celle");
@@ -44,29 +45,29 @@ function cellGrid (orizontalCells , verticalCells){
         //append per aggiungere un elemento virtuale ad un elemento che abbiamo creato
         gridContainer.append(celle);
 
-function eventoClick(cellGrid,bombList){
+function eventoClick(cellsNumber,contenitoreBombe){
 // creo l'elemento per far cambiare colore alle celle al click
         celle.addEventListener("click", function () {
             // questa qui è la mia costante per vedere il numero dell'indice delle mie caselle
-            const celleIndex = +this.dataset.indice
+            const celleIndex = +this.dataset.indice;
 
             //creo delle condizioni per fermare il gioco quando si avverano
             if(this.classList.contains('bg-red') || this.classList.contains('bgAzzurro') || gameover){
-                return
+                return;
             }
             celle.classList.add("bgAzzurro");
             celle.classList.remove("bg-red");
             console.log("Hai selezionato ", +this.dataset.indice)
             
             if(contenitoreBombe.includes(cellsNumber)){
-                celle.classList.add("bg-red")
+                celle.classList.remove("bgAzzurro");
+                celle.classList.add("bg-red");
                 gameover = +true;
-                alert("Hai perso!")
+                alert("Hai perso!");
             }
-            
         })
     }
-    eventoClick(cellGrid(), bombList())
+    eventoClick(cellsNumber,contenitoreBombe)
 }
 }
         
